@@ -1,3 +1,5 @@
+import numpy as np
+
 # phi_cts are complex valued, unit length phases. 
 # they should be calculated using very short time-series methods, I prefer 2 cycle Morlet wavelets. 
 # choice of wavelet size between 1 and 5 does not make too much difference, but larger window sizes can wash out fast changing waves.
