@@ -18,9 +18,10 @@ def C_TW_bases_betas(phi_cts,nBases=3):
     u,s,vh = np.linalg.svd(COV)
     print(100.0*s[:nBases]/s.sum())
     bases_sb = vh[:nBases].T
-    betas_Cb = phi_cent.dot(bases_sb)
+    betas_Cb = phi_cent.dot(bases_sb.conj())
     model_Cs = np.exp(1j*np.angle(bases_sb.dot(betas_Cb.T).T))
     fit_C = (phi_Cs/model_Cs).mean(-1).real
     fit_ct = fit_C.reshape(phi_cts.shape[0],phi_cts.shape[1])
     betas_ctb = betas_Cb.reshape(phi_cts.shape[0],-1,bases_sb.shape[1])
+
     return bases_sb,fit_ct,betas_ctb
